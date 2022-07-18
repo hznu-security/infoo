@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 
 @DataType()
 public class Infoo {
-    int TAid;    //安全域标识
+    String TAid;    //安全域标识
     String address;   // 云端地址
     Timestamp time;   // 时间戳
     String ct;       // 密钥密文
@@ -15,7 +15,7 @@ public class Infoo {
     String rho;       // ρ
     String hash;       // 哈希
 
-    public Infoo(@JsonProperty("TAid") int TAid, @JsonProperty("address") String address,
+    public Infoo(@JsonProperty("TAid") String TAid, @JsonProperty("address") String address,
                  @JsonProperty("time") Timestamp time, @JsonProperty("ct") String ct,
                  @JsonProperty("mstr") String mstr, @JsonProperty("rho") String rho, @JsonProperty("hash") String hash) {
         this.TAid = TAid;
@@ -27,11 +27,11 @@ public class Infoo {
         this.hash = hash;
     }
 
-    public int getTAid() {
+    public String getTAid() {
         return TAid;
     }
 
-    public void setTAid(int TAid) {
+    public void setTAid(String TAid) {
         this.TAid = TAid;
     }
 

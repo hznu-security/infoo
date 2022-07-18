@@ -414,7 +414,7 @@ public final class FabCar implements ContractInterface {
     }
 
     @Transaction()
-    public String postInfo(final Context ctx,final String key,final int TAid,final String address,
+    public String postInfo(final Context ctx,final String key,final String TAid,final String address,
                            final String ct,final String mstr,
                            final String rho,final String hash) {
 
