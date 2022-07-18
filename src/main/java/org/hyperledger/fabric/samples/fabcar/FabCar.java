@@ -463,6 +463,7 @@ public final class FabCar implements ContractInterface {
         String[] dataArray;
         dataArray = rhoString.split(",");
 
+
         int abfSize = gbfInit(10); //控制size大小，为预计要放入ABF的元素数量
         myMap = addArray(dataArray, abfSize);
 
@@ -470,7 +471,7 @@ public final class FabCar implements ContractInterface {
         /*get ABFsize, M, ABF end*/
         /*get matrix M from String*/
         int[] intArr = new int[0];
-        String[] valueArr = mString.replace("[", "").replace("]", "").split(", ");
+        String[] valueArr = mString.replace("[", "").replace("]", "").split(",");
         intArr = new int[valueArr.length];
         for (int k = 0; k < valueArr.length; k++) {
             intArr[k] = Integer.parseInt(valueArr[k]);
