@@ -545,7 +545,8 @@ public final class FabCar implements ContractInterface {
         if (r1 == r2) {
             return info;
         } else {
-            throw new ChaincodeException(res2,"未能通过验证");
+            info.hash = "没过";
+            return info;
         }
     }
 
