@@ -414,7 +414,7 @@ public final class FabCar implements ContractInterface {
     }
 
     @Transaction()
-    public String postInfo(final Context ctx,final String key,final String TAid,final String address,
+    public Infoo postInfo(final Context ctx,final String key,final String TAid,final String address,
                            final String ct,final String mstr,
                            final String rho,final String hash) {
 
@@ -428,8 +428,7 @@ public final class FabCar implements ContractInterface {
         infoState =genson.serialize(info);
         stub.putStringState(key,infoState);
 
-
-        return "success";
+        return info;
     }
 
     @Transaction()
