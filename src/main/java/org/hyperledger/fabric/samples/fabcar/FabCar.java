@@ -414,7 +414,7 @@ public final class FabCar implements ContractInterface {
     }
 
     @Transaction()
-    public String postInfo(final Context ctx,final String key,final String TAid,final String address,
+    public Infoo postInfo(final Context ctx,final String key,final String TAid,final String address,
                            final String ct,final String mstr,
                            final String rho,final String hash) {
 
@@ -428,11 +428,11 @@ public final class FabCar implements ContractInterface {
         infoState =genson.serialize(info);
         stub.putStringState(key,infoState);
 
-        return infoState;
+        return info;
     }
 
     @Transaction()
-    public String queryInfo(final Context ctx, final String key, final String att) {  // att:属性
+    public Infoo queryInfo(final Context ctx, final String key, final String att) {  // att:属性
         ChaincodeStub stub = ctx.getStub();
         String infoState = stub.getStringState(key);
         if (infoState.isEmpty()) {
@@ -542,11 +542,11 @@ public final class FabCar implements ContractInterface {
         int r1 = mRank(testM2, -1, col);
         int r2 = mRank(testM2T1, -1, row + 1);
         if (r1 == r2) {
-            return infoState;
+            return info;
         } else {
             info.hash = "没过";
-            String res = genson.serialize(info);
-            return res;
+            // String res = genson.serialize(info);
+            return info;
         }
     }
 
