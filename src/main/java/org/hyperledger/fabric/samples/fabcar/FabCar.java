@@ -414,7 +414,7 @@ public final class FabCar implements ContractInterface {
     }
 
     @Transaction()
-    public String postInfo(final Context ctx,final String key,final String TAid,final String address,
+    public String postInfo(final Context ctx,final String key,final String ta,final String address,
                            final String ct,final String mstr,
                            final String rho,final String hash) {
 
@@ -424,7 +424,7 @@ public final class FabCar implements ContractInterface {
             String errorMessage = String.format("INFO %s already exist",key);
             throw new ChaincodeException(errorMessage,FabCarErrors.INFO_ALREADY_EXISTS.toString());
         }
-        Infoo info = new Infoo(TAid,address,new Timestamp(System.currentTimeMillis()),ct,mstr,rho,hash);
+        Infoo info = new Infoo(ta,address,new Timestamp(System.currentTimeMillis()),ct,mstr,rho,hash);
         infoState =genson.serialize(info);
         stub.putStringState(key,infoState);
 
