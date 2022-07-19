@@ -542,10 +542,11 @@ public final class FabCar implements ContractInterface {
         int r1 = mRank(testM2, -1, col);
         int r2 = mRank(testM2T1, -1, row + 1);
         if (r1 == r2) {
-            return info.toString();
+            return infoState;
         } else {
             info.hash = "没过";
-            return info.toString();
+            String res = genson.serialize(info);
+            return res;
         }
     }
 
