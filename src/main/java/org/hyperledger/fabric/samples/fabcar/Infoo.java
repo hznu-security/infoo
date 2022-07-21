@@ -13,8 +13,6 @@ public class Infoo {
     @Property()
     String address;   // 云端地址
     @Property()
-    Timestamp time;   // 时间戳
-    @Property()
     String ct;       // 密钥密文
     @Property()
     String mstr;      // M写成字符串
@@ -23,12 +21,10 @@ public class Infoo {
     @Property()
     String hash;       // 哈希
 
-    public Infoo(@JsonProperty("ta") String ta, @JsonProperty("address") String address,
-                 @JsonProperty("time") Timestamp time, @JsonProperty("ct") String ct,
+    public Infoo(@JsonProperty("ta") String ta, @JsonProperty("address") String address, @JsonProperty("ct") String ct,
                  @JsonProperty("mstr") String mstr, @JsonProperty("rho") String rho, @JsonProperty("hash") String hash) {
         this.ta = ta;
         this.address = address;
-        this.time = time;
         this.ct = ct;
         this.mstr = mstr;
         this.rho = rho;
@@ -49,14 +45,6 @@ public class Infoo {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
-        this.time = time;
     }
 
     public String getCt() {

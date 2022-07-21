@@ -412,7 +412,7 @@ public final class FabCar implements ContractInterface {
             String errorMessage = String.format("INFO %s already exist", key);
             throw new ChaincodeException(errorMessage, FabCarErrors.INFO_ALREADY_EXISTS.toString());
         }
-        Infoo info = new Infoo(ta, address, new Timestamp(System.currentTimeMillis()), ct, mstr, rho, hash);
+        Infoo info = new Infoo(ta, address, ct, mstr, rho, hash);
         infoState = genson.serialize(info);
         stub.putStringState(key, infoState);
 
