@@ -369,7 +369,7 @@ public final class FabCar implements ContractInterface {
     @Transaction()
     public Infoo postInfo(final Context ctx, final String key, final String ta, final String address,
                            final String ct, final String mstr,
-                           final String rho, final String hash) {
+                           final String rho, final String hash, String time) {
 
         ChaincodeStub stub = ctx.getStub();
         String infoState = stub.getStringState(key);
@@ -377,8 +377,7 @@ public final class FabCar implements ContractInterface {
             String errorMessage = String.format("INFO %s already exist", key);
             throw new ChaincodeException(errorMessage, FabCarErrors.INFO_ALREADY_EXISTS.toString());
         }
-        Timestamp time = new Timestamp(System.currentTimeMillis());
-        Infoo info = new Infoo(ta, address, ct, mstr, rho, hash,time.toString());
+        Infoo info = new Infoo(ta, address, ct, mstr, rho, hash,time);
         infoState = genson.serialize(info);
         stub.putStringState(key, infoState);
 
