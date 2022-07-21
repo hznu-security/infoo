@@ -4,7 +4,6 @@ import com.owlike.genson.annotation.JsonProperty;
 import org.hyperledger.fabric.contract.annotation.DataType;
 import org.hyperledger.fabric.contract.annotation.Property;
 
-import java.sql.Timestamp;
 
 @DataType()
 public class Infoo {
@@ -23,7 +22,9 @@ public class Infoo {
     @Property()
     String time;  // 时间
 
-    public Infoo(String ta, String address, String ct, String mstr, String rho, String hash, String time) {
+    public Infoo(@JsonProperty("ta") String ta, @JsonProperty("address")String address,@JsonProperty("ct") String ct,
+                 @JsonProperty("mstr")String mstr, @JsonProperty("rho")String rho,
+                 @JsonProperty("hash") String hash,@JsonProperty("time") String time) {
         this.ta = ta;
         this.address = address;
         this.ct = ct;

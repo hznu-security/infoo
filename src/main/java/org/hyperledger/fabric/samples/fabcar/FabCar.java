@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Random;
 
 
-import com.sun.xml.internal.ws.api.pipe.SyncStartForAsyncFeature;
 import org.hyperledger.fabric.contract.Context;
 import org.hyperledger.fabric.contract.ContractInterface;
 import org.hyperledger.fabric.contract.annotation.Contract;
@@ -351,11 +350,7 @@ public final class FabCar implements ContractInterface {
         return str;
     }
 
-    /**
-     * Creates some initial Cars on the ledger.
-     *
-     * @param ctx the transaction context
-     */
+
     @Transaction()
     public void initLedger(final Context ctx) {
         ChaincodeStub stub = ctx.getStub();
