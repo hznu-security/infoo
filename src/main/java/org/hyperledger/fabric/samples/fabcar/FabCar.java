@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 
+import com.sun.xml.internal.ws.api.pipe.SyncStartForAsyncFeature;
 import org.hyperledger.fabric.contract.Context;
 import org.hyperledger.fabric.contract.ContractInterface;
 import org.hyperledger.fabric.contract.annotation.Contract;
@@ -360,46 +361,15 @@ public final class FabCar implements ContractInterface {
         ChaincodeStub stub = ctx.getStub();
 
         String[] carData = {
-                "{ \"make\": \"Toyota\", \"model\": \"Prius\", \"color\": \"blue\", \"owner\": \"Tomoko\" }",
-                "{ \"make\": \"Ford\", \"model\": \"Mustang\", \"color\": \"red\", \"owner\": \"Brad\" }",
-                "{ \"make\": \"Hyundai\", \"model\": \"Tucson\", \"color\": \"green\", \"owner\": \"Jin Soo\" }",
-                "{ \"make\": \"Volkswagen\", \"model\": \"Passat\", \"color\": \"yellow\", \"owner\": \"Max\" }",
-                "{ \"make\": \"Tesla\", \"model\": \"S\", \"color\": \"black\", \"owner\": \"Adrian\" }",
-                "{ \"make\": \"Peugeot\", \"model\": \"205\", \"color\": \"purple\", \"owner\": \"Michel\" }",
-                "{ \"make\": \"Chery\", \"model\": \"S22L\", \"color\": \"white\", \"owner\": \"Aarav\" }",
-                "{ \"make\": \"Fiat\", \"model\": \"Punto\", \"color\": \"violet\", \"owner\": \"Pari\" }",
-                "{ \"make\": \"Tata\", \"model\": \"nano\", \"color\": \"indigo\", \"owner\": \"Valeria\" }",
-                "{ \"make\": \"Holden\", \"model\": \"Barina\", \"color\": \"brown\", \"owner\": \"Shotaro\" }"
+                "{ \"make\": \"Toyota\", \"model\": \"Prius\", \"color\": \"blue\", \"owner\": \"Tomoko\" }"
         };
 
         for (int i = 0; i < carData.length; i++) {
             String key = String.format("CAR%d", i);
-
-            Car car = genson.deserialize(carData[i], Car.class);
-            String carState = genson.serialize(car);
+            String carState = "asdsagfas";
             stub.putStringState(key, carState);
         }
     }
-
-    @Transaction()
-    public Car createCar(final Context ctx, final String key, final String make, final String model,
-                         final String color, final String owner) {
-        ChaincodeStub stub = ctx.getStub();
-
-        String carState = stub.getStringState(key);
-        if (!carState.isEmpty()) {
-            String errorMessage = String.format("Car %s already exists", key);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, FabCarErrors.CAR_ALREADY_EXISTS.toString());
-        }
-
-        Car car = new Car(make, model, color, owner);
-        carState = genson.serialize(car);
-        stub.putStringState(key, carState);
-
-        return car;
-    }
-
 
     @Transaction()
     public Infoo postInfo(final Context ctx, final String key, final String ta, final String address,
@@ -412,7 +382,8 @@ public final class FabCar implements ContractInterface {
             String errorMessage = String.format("INFO %s already exist", key);
             throw new ChaincodeException(errorMessage, FabCarErrors.INFO_ALREADY_EXISTS.toString());
         }
-        Infoo info = new Infoo(ta, address, ct, mstr, rho, hash);
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        Infoo info = new Infoo(ta, address, ct, mstr, rho, hash,time.toString());
         infoState = genson.serialize(info);
         stub.putStringState(key, infoState);
 

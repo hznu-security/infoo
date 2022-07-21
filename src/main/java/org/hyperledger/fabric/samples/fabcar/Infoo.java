@@ -20,15 +20,17 @@ public class Infoo {
     String rho;       // ρ
     @Property()
     String hash;       // 哈希
+    @Property()
+    String time;  // 时间
 
-    public Infoo(@JsonProperty("ta") String ta, @JsonProperty("address") String address, @JsonProperty("ct") String ct,
-                 @JsonProperty("mstr") String mstr, @JsonProperty("rho") String rho, @JsonProperty("hash") String hash) {
+    public Infoo(String ta, String address, String ct, String mstr, String rho, String hash, String time) {
         this.ta = ta;
         this.address = address;
         this.ct = ct;
         this.mstr = mstr;
         this.rho = rho;
         this.hash = hash;
+        this.time = time;
     }
 
     public String getTa() {
@@ -77,5 +79,13 @@ public class Infoo {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
