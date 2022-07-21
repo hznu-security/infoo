@@ -31,7 +31,6 @@ import org.hyperledger.fabric.shim.ChaincodeStub;
 import com.owlike.genson.Genson;
 
 
-
 @Contract(
         name = "FabCar",
         info = @Info(
@@ -117,52 +116,6 @@ public final class FabCar implements ContractInterface {
             sb.append(str.charAt(number));
         }
         return sb.toString();
-    }
-
-    public static String getRho(final int exnum) {
-        //att 10, 20, 30, 40, 50
-        String[] rhoStringvec = {"j,g,a,h,d,b,c,e,f,i",
-                "d1,h,j1,a,c1,f,g,h1,e,b1,f1,c,a1,j,e1,b,g1,d,i1,i",
-                "d,h1,e1,i,f1,g,a2,j1,g2,f,i1,f2,b,c1,b2,e,i2,e2,d2,c2,j,b1,d1,g1,c,a,h,h2,j2,a1",
-        "j2,h,f2,b3,g,c,f1,g2,j,e1,i3,c2,b1,h2,b,f,a3,g3,b2,h3,a1,h1,i1,i,a,d2,d3,e3,c3,d,g1,a2,j3,e2,e,c1,i2,j1,d1,f3",
-        "f1,a2,j4,j1,i2,a,c2,d2,i1,h4,b1,j3,g2,i4,b4,g1,c,e2,h,b2,a4,b,f3,d3,c4,c3,e,a1,e1,d4,h1,f,g3,g,i3,h3,d,f2,b3,"
-                        + "g4,a3,j,c1,h2,e4,d1,j2,f4,i,e3"};
-        return rhoStringvec[exnum];
-    }
-
-    public static String getMString(final int exnum) {
-        String[] mStringvec = {"[10, 4, 1, 2, 0, 625, 1, 2, 0, 16, 1, 1, 1, 0, 1, 2, 0, 81, 1, 1, 256, 0, 1, 1, 16, 0, "
-        + "1, 1, 81, 0, 1, 1, 625, 0, 1, 2, 0, 1, 1, 2, 0, 256]",
-        "[20, 4, 1, 2, 0, 262144, 1, 1, 134217728, 0, 1, 2, 0, 1000000000, 1, 1, 1, 0, 1, 2, 0, 19683, 1, 1, 10077696, "
-        + "0, 1, 1, 40353607, 0, 1, 2, 0, 134217728, 1, 1, 1953125, 0, 1, 2, 0, 512, 1, 2, 0, 10077696, 1, 1, 19683, "
-        + "0, 1, 2, 0, 1, 1, 1, 1000000000, 0, 1, 2, 0, 1953125, 1, 1, 512, 0, 1, 2, 0, 40353607, 1, 1, 262144, 0, 1, "
-        + "2, 0, 387420489, 1, 1, 387420489, 0]",
-        "[30, 4, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, "
-        + "0, 1, 1, 2147483647, 0, 1, 2, 0, 1, 1, 1, 2147483647, 0, 1, 2, 0, 40353607, 1, 1, 2147483647, 0, 1, 1, "
-        + "2147483647, 0, 1, 2, 0, 10077696, 1, 1, 524288, 0, 1, 1, 2147483647, 0, 1, 2, 0, 512, 1, 1, 2147483647, 0, "
-        + "1, 2, 0, 387420489, 1, 2, 0, 1953125, 1, 2, 0, 262144, 1, 2, 0, 19683, 1, 1, 2147483647, 0, 1, 1, "
-        + "2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 1162261467, 0, 1, 1, 1, 0, 1, 1, 2147483647, "
-        + "0, 1, 2, 0, 134217728, 1, 2, 0, 1000000000, 1, 1, 2147483647, 0]",
-        "[40, 4, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 512, 1, 1, 2147483647, 0, 1, "
-        + "1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, "
-        + "0, 387420489, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 536870912, 0, 1, 1, "
-        + "2147483647, 0, 1, 2, 0, 1, 1, 2, 0, 40353607, 1, 1, 2147483647, 0, 1, 2, 0, 134217728, 1, 1, 2147483647, 0, "
-        + "1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 1, 0, 1, 1, 2147483647, 0, 1, 2, 0, "
-        + "262144, 1, 2, 0, 1953125, 1, 2, 0, 19683, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, "
-        + "2, 0, 1000000000, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, "
-        + "2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 10077696]",
-        "[50, 4, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 1000000000, 1, 1, 2147483647, 0, 1, 1, 2147483647, "
-        + "0, 1, 1, 1, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 134217728, 1, 1, "
-        + "2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 387420489, 1, 2, 0, 512, 1, 1, "
-        + "2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, "
-        + "1, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 19683, 1, 1, 2147483647, 0, 1, "
-        + "1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 262144, 1, 1, 2147483647, 0, 1, 1, "
-        + "2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 1, "
-        + "2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 40353607, 1, 1, 2147483647, 0, 1, 1, "
-        + "2147483647, 0, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0, 1, 2, 0, 1953125, 1, 1, 2147483647, 0, 1, 1, "
-        + "2147483647, 0, 1, 2, 0, 10077696, 1, 1, 2147483647, 0, 1, 1, 2147483647, 0]"};
-        String mString = mStringvec[exnum];
-        return mString;
     }
 
     //取矩阵的转置
@@ -397,39 +350,74 @@ public final class FabCar implements ContractInterface {
         return str;
     }
 
+    /**
+     * Creates some initial Cars on the ledger.
+     *
+     * @param ctx the transaction context
+     */
     @Transaction()
     public void initLedger(final Context ctx) {
         ChaincodeStub stub = ctx.getStub();
 
         String[] carData = {
-                "{ \"make\": \"Toyota\", \"model\": \"Prius\", \"color\": \"[2, 2, 1, 1, 1, 2]\", \"owner\": \"test\" }"
+                "{ \"make\": \"Toyota\", \"model\": \"Prius\", \"color\": \"blue\", \"owner\": \"Tomoko\" }",
+                "{ \"make\": \"Ford\", \"model\": \"Mustang\", \"color\": \"red\", \"owner\": \"Brad\" }",
+                "{ \"make\": \"Hyundai\", \"model\": \"Tucson\", \"color\": \"green\", \"owner\": \"Jin Soo\" }",
+                "{ \"make\": \"Volkswagen\", \"model\": \"Passat\", \"color\": \"yellow\", \"owner\": \"Max\" }",
+                "{ \"make\": \"Tesla\", \"model\": \"S\", \"color\": \"black\", \"owner\": \"Adrian\" }",
+                "{ \"make\": \"Peugeot\", \"model\": \"205\", \"color\": \"purple\", \"owner\": \"Michel\" }",
+                "{ \"make\": \"Chery\", \"model\": \"S22L\", \"color\": \"white\", \"owner\": \"Aarav\" }",
+                "{ \"make\": \"Fiat\", \"model\": \"Punto\", \"color\": \"violet\", \"owner\": \"Pari\" }",
+                "{ \"make\": \"Tata\", \"model\": \"nano\", \"color\": \"indigo\", \"owner\": \"Valeria\" }",
+                "{ \"make\": \"Holden\", \"model\": \"Barina\", \"color\": \"brown\", \"owner\": \"Shotaro\" }"
         };
 
         for (int i = 0; i < carData.length; i++) {
             String key = String.format("CAR%d", i);
 
-            String carState = "asfdsafaskldhklashf";
+            Car car = genson.deserialize(carData[i], Car.class);
+            String carState = genson.serialize(car);
             stub.putStringState(key, carState);
         }
     }
 
     @Transaction()
-    public String postInfo(final Context ctx,final String key,final String ta,final String address,
-                           final String ct,final String mstr,
-                           final String rho,final String hash) {
-
+    public Car createCar(final Context ctx, final String key, final String make, final String model,
+                         final String color, final String owner) {
         ChaincodeStub stub = ctx.getStub();
-        String infoState = stub.getStringState(key);
-        if (!infoState.isEmpty()) {
-            String errorMessage = String.format("INFO %s already exist",key);
-            throw new ChaincodeException(errorMessage,FabCarErrors.INFO_ALREADY_EXISTS.toString());
-        }
-        Infoo info = new Infoo(ta,address,new Timestamp(System.currentTimeMillis()),ct,mstr,rho,hash);
-        infoState =genson.serialize(info);
-        stub.putStringState(key,infoState);
 
-        return infoState;
+        String carState = stub.getStringState(key);
+        if (!carState.isEmpty()) {
+            String errorMessage = String.format("Car %s already exists", key);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, FabCarErrors.CAR_ALREADY_EXISTS.toString());
+        }
+
+        Car car = new Car(make, model, color, owner);
+        carState = genson.serialize(car);
+        stub.putStringState(key, carState);
+
+        return car;
     }
+
+
+//    @Transaction()
+//    public String postInfo(final Context ctx, final String key, final String ta, final String address,
+//                           final String ct, final String mstr,
+//                           final String rho, final String hash) {
+//
+//        ChaincodeStub stub = ctx.getStub();
+//        String infoState = stub.getStringState(key);
+//        if (!infoState.isEmpty()) {
+//            String errorMessage = String.format("INFO %s already exist", key);
+//            throw new ChaincodeException(errorMessage, FabCarErrors.INFO_ALREADY_EXISTS.toString());
+//        }
+//        Infoo info = new Infoo(ta, address, new Timestamp(System.currentTimeMillis()), ct, mstr, rho, hash);
+//        infoState = genson.serialize(info);
+//        stub.putStringState(key, infoState);
+//
+//        return infoState;
+//    }
 
     @Transaction()
     public String queryInfo(final Context ctx, final String key, final String att) {  // att:属性
@@ -452,7 +440,7 @@ public final class FabCar implements ContractInterface {
         String[] sizevec = {"100", "400", "900", "1600", "2500"}; //这里用string转int否则会报magic number错误
         int size = Integer.parseInt(sizevec[0]);
 
-        Infoo info = genson.deserialize(infoState,Infoo.class);
+        Infoo info = genson.deserialize(infoState, Infoo.class);
 
 
         String mString = info.getMstr();
@@ -552,6 +540,7 @@ public final class FabCar implements ContractInterface {
 
     private enum FabCarErrors {
         INFO_NOT_FOUND,
-        INFO_ALREADY_EXISTS
+        INFO_ALREADY_EXISTS,
+        CAR_ALREADY_EXISTS
     }
 }
